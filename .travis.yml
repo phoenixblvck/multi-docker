@@ -8,6 +8,7 @@ services:
 
 script:
     - cd client
+    - pwd
     - ls
 
 # after_success:
