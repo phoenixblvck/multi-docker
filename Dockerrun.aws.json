@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "bingani/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name" : "server",
+            "image": "bingani/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name":"worker",
+            "image":"bingani/multi-worker",
+            "hostname":"worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "bingani/nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostport": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links":["client", "server"]
+        }
+    ]
+}
